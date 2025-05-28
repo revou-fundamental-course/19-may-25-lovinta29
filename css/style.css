@@ -300,14 +300,6 @@
             height: 60px;
         }
 
-        .thermometer-icon {
-            position: absolute;
-            top: 10%;
-            right: 10%;
-            font-size: 3rem;
-            animation: pulse 3s infinite;
-        }
-
         /* Animations */
         @keyframes fadeInDown {
             from {
