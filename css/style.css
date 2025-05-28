@@ -1,0 +1,402 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #2d3436 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .converter-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .input-section, .output-section {
+            margin-bottom: 25px;
+        }
+
+        .input-label {
+            display: block;
+            color: #2d3436;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-title {
+            font-weight: 600;
+            color: #2d3436;
+            font-size: 1rem;
+        }
+
+        .temperature-input, .temperature-output {
+            padding: 12px 16px;
+            border: 2px solid #74b9ff;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .temperature-input:focus {
+            outline: none;
+            border-color: #0984e3;
+            box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .temperature-output {
+            background: #f8f9fa;
+            color: #2d3436;
+            font-weight: 600;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-convert {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-convert:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(116, 185, 255, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(253, 121, 168, 0.4);
+        }
+
+        .btn-reverse {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+        }
+
+        .btn-reverse:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 184, 148, 0.4);
+        }
+
+        .calculation-display {
+            background: #f8f9fa;
+            border-left: 4px solid #74b9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .calculation-display.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .calculation-label {
+            font-weight: 600;
+            color: #2d3436;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .calculation-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #0984e3;
+            font-weight: 600;
+        }
+
+        .explanation-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #74b9ff;
+        }
+
+        .explanation-title {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .explanation-content h4 {
+            color: #0984e3;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .explanation-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #636e72;
+        }
+
+        .formula {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #0984e3;
+            text-align: center;
+            margin: 15px 0;
+            border: 2px solid #74b9ff;
+        }
+
+        /* Weather Animation */
+        .weather-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            opacity: 0.6;
+        }
+
+        .cloud::before {
+            content: '';
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+        }
+
+        .cloud1 {
+            width: 100px;
+            height: 40px;
+            top: 20%;
+            left: -100px;
+            animation: float 20s infinite linear;
+        }
+
+        .cloud1::before {
+            top: -15px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .cloud2 {
+            width: 80px;
+            height: 30px;
+            top: 60%;
+            left: -80px;
+            animation: float 25s infinite linear 5s;
+        }
+
+        .cloud2::before {
+            top: -10px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .cloud3 {
+            width: 120px;
+            height: 50px;
+            top: 40%;
+            left: -120px;
+            animation: float 30s infinite linear 10s;
+        }
+
+        .cloud3::before {
+            top: -20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .thermometer-icon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 3rem;
+            animation: pulse 3s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            to {
+                transform: translateX(calc(100vw + 200px));
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Error Styles */
+        .error {
+            border-color: #e17055 !important;
+            box-shadow: 0 0 0 3px rgba(225, 112, 85, 0.2) !important;
+        }
+
+        .error-message {
+            color: #e17055;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .converter-card {
+                padding: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .converter-card {
+                padding: 15px;
+            }
+        }

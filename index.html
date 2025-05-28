@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Suhu - Celsius & Fahrenheit</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Konversi Suhu</h1>
+            <p class="subtitle">Celsius ↔ Fahrenheit</p>
+        </header>
+
+        <div class="converter-card">
+            <form id="temperatureForm" class="temperature-form">
+                <!-- Celsius Input Section -->
+                <div class="input-section celsius-section">
+                    <label for="celsiusInput" class="input-label">
+                        Masukkan suhu derajat Celsius (°C) ke kotak dibawah, lalu klik tombol Konversi untuk mendapatkan hasil konversi dalam bentuk Fahrenheit (°F).
+                    </label>
+                    <div class="input-group">
+                        <span class="input-title">Celsius (°C):</span>
+                        <input type="number" id="celsiusInput" class="temperature-input" step="0.01" placeholder="90">
+                        <div class="error-message" id="celsiusError">Harap masukkan nilai suhu yang valid</div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-convert" data-conversion="celsius">Konversi</button>
+                    <button type="button" class="btn btn-reset" id="resetBtn">Reset</button>
+                    <button type="button" class="btn btn-reverse" id="reverseBtn">Reverse</button>
+                </div>
+
+                <!-- Fahrenheit Output Section -->
+                <div class="output-section fahrenheit-section">
+                    <div class="input-group">
+                        <span class="input-title">Fahrenheit (°F):</span>
+                        <input type="number" id="fahrenheitOutput" class="temperature-output" readonly placeholder="194">
+                        <div class="error-message" id="fahrenheitError">Harap masukkan nilai suhu yang valid</div>
+                    </div>
+                </div>
+
+                <!-- Calculation Display -->
+                <div class="calculation-display" id="calculationDisplay">
+                    <span class="calculation-label">Cara Kalkulasi:</span>
+                    <div class="calculation-formula" id="calculationFormula">
+                        90°C × (9/5) + 32 = 194°F
+                    </div>
+                </div>
+            </form>
+
+            <!-- Conversion Explanation -->
+            <div class="explanation-section">
+                <h3 class="explanation-title" id="explanationTitle">Fahrenheit ke Celsius</h3>
+                <div class="explanation-content" id="explanationContent">
+                    <h4>Cara Konversi Dari Celsius (°C) ke Fahrenheit (°F)</h4>
+                    <p>Suhu S dalam derajat Fahrenheit (°F) sama dengan Suhu S dalam derajat Celsius (°C) kali 9/5 tambah 32.</p>
+                    <div class="formula">
+                        S<sub>(°F)</sub> = (S<sub>(°C)</sub> × 9/5) + 32
+                    </div>
+                    <p>atau</p>
+                    <div class="formula">
+                        S<sub>(°F)</sub> = (S<sub>(°C)</sub> × 1.8) + 32
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Animation Background -->
+        <div class="weather-animation">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="thermometer-icon">🌡️</div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
